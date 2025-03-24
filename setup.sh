@@ -29,6 +29,6 @@ $SED -i "s/__MODULENAME__/$module/g" docs/*.* README.md
 $SED -i "s/__YEAR__/$year/g" docs/*.*
 $SED -i "s/__RELEASE__/$version/g" docs/*.* pyproject.toml
 $SED -i "s/__SRCPATH__/../g" docs/*.* 
-$SED -i "s/__SRCPATH__/./g" doc_*.sh
+$SED -i "s/__SRCPATH__/./g" build_docs.sh
 $SED -i "s/__SRCPATH__/$src/g" pyproject.toml
 $SED -i "/Copyright (c)/c\\Copyright (c) $year $author" LICENSE
