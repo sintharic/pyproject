@@ -15,20 +15,20 @@ for file in "$DOCS_DIR"/*.rst; do
 
     # Use awk to delete everything before the first occurrence of $name
     # and remove everything after and including "Module content"
-    awk -v name="$name" '
-        BEGIN { keep = 0 }
-        $0 ~ name { keep = 1 }
-        keep && !found_end { print }
-        /Module content/ { found_end = 1 }
-    ' "$file" > "$file.tmp" && mv "$file.tmp" "$file"
+    # awk -v name="$name" '
+    #     BEGIN { keep = 0 }
+    #     $0 ~ name { keep = 1 }
+    #     keep && !found_end { print }
+    #     /Module content/ { found_end = 1 }
+    # ' "$file" > "$file.tmp" && mv "$file.tmp" "$file"
 done
 
 # Modify modules.rst: delete everything up to ".. toctree::"
-awk '
-    BEGIN { keep = 0 }
-    /.. toctree::/ { keep = 1; print; next }
-    keep
-' "$DOCS_DIR/modules.rst" > "$DOCS_DIR/modules.rst.tmp" && mv "$DOCS_DIR/modules.rst.tmp" "$DOCS_DIR/modules.rst"
+# awk '
+#     BEGIN { keep = 0 }
+#     /.. toctree::/ { keep = 1; print; next }
+#     keep
+# ' "$DOCS_DIR/modules.rst" > "$DOCS_DIR/modules.rst.tmp" && mv "$DOCS_DIR/modules.rst.tmp" "$DOCS_DIR/modules.rst"
 
 # Modify index.rst: Replace ":maxdepth: 2" with ":maxdepth: 3"
 # awk '
